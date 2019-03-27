@@ -1,25 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* get login page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Weather Forecast' });
+  res.render('add', { title: 'Login' });
 });
 
 /**
- *  POST the data about the weather.
- *  parameters in body:
- *    location: a City Id
- *    date: a date
+ *  POST the username and password
  */
 router.post('/weather_data', function(req, res, next) {
   // get random weather for a location
     const forecast= getWeatherForecast(req.body.location, req.body.date);
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(forecast));
-
 });
-
 
 const CLOUDY= 0;
 const CLEAR=1;

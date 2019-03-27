@@ -34,9 +34,9 @@ var filesToCache = [
 self.addEventListener('install', function (e) {
     console.log('[ServiceWorker] Install');
     e.waitUntil(
-        caches.open(cacheName).then(function (cache) {
+        caches.open(cacheName).then(function (cache) {    //call cache name
             console.log('[ServiceWorker] Caching app shell');
-            return cache.addAll(filesToCache);
+            return cache.addAll(filesToCache);                      //transfer all files ,if all the files cache successful,then will install service-worker
         })
     );
 });
